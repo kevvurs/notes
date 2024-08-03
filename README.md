@@ -1,3 +1,15 @@
+Notes app.
+
+__TODO__:
+* Make the cards look super chill
+  * ability to insert checkbox items above textarea
+* Decide how to create cards
+* Drag and drop cards
+* Save notes locally
+* How might we organize notes over time?
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

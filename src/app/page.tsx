@@ -1,3 +1,4 @@
+import { TaskProvider } from '../components/TaskContext';
 import TaskBoard from '../components/TaskBoard';
 
 export default function Home() {
@@ -6,7 +7,9 @@ export default function Home() {
       <h1>Do the damn thing.</h1>
       <hr />
       <div className='bg-nord2'>
-        <TaskBoard />
+        <TaskProvider>
+          <TaskBoard />
+        </TaskProvider>
       </div>
       <hr />
     </main>

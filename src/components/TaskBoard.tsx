@@ -1,32 +1,21 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
+import { useTaskContext } from './TaskContext';
 import TaskCard from './TaskCard';
-import Task from '../lib/Task';
 
 export default function TaskBoard() {
   const boardRef = useRef(null);
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const createTask = (event: React.MouseEvent<HTMLDivElement>) => {
+  const { tasks, createTask } = useTaskContext();
+  const addTask = (event: React.MouseEvent<HTMLDivElement>) => {
     if (boardRef.current && event.target === boardRef.current) {
-      setTasks([...tasks, new Task(tasks.length, 'todo', '')]);  
+      createTask();  
     }
-  };
-  const updateTask = (newTask: Task) => {
-    let newTasks: Task[] = [];
-    for (let task of tasks) {
-      if (newTask.id === task.id) {
-        newTasks.push(newTask);
-      } else {
-        newTasks.push(task);
-      }
-    }
-    setTasks([...newTasks]);
   };
   return (
     <div className="min-h-96"
          ref={boardRef}
-         onClick={createTask}>
+         onClick={addTask}>
       {tasks.length == 0 &&
         <div className="flex flex-wrap justify-center">
           <p className="text-2xl opacity-75">
@@ -37,7 +26,7 @@ export default function TaskBoard() {
       {tasks.length > 0 &&
         <div className="flex flex-wrap justify-start">
           {tasks.map(task => (
-            <TaskCard key={task.id} task={task} updateTask={updateTask} />
+            <TaskCard key={task.id} task={task} />
           ))} 
         </div>
       }

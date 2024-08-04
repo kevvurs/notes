@@ -1,10 +1,10 @@
 export default class Task {
-    private readonly _id: number;
+    private readonly _id: string;
     private _title: string;
     private _description: string;
 
-    constructor(id: number | null, title: string, description: string) {
-        this._id = id || 0;
+    constructor(id: string | null, title: string, description: string) {
+        this._id = id || '00-000-000';
         this._title = title;
         this._description = description;
     }
